@@ -11,6 +11,9 @@ lines();
 
 var removeRectangleInLine = 0;
 
+/**
+ * Нарисовать линии
+ */
 function lines() {
 	//painting = false;
 	//Remove event listeners so line won't draw rectangle
@@ -68,6 +71,12 @@ function lines() {
 
 //Color palette
 var colors;
+
+/**
+ * Выбрать цвет из палитры цветов
+ * @param palette Палитра цветов
+ * @return цвет
+ */
 function changeColors(palette) {
 	switch(palette.id) {
 		case "red":
@@ -148,7 +157,10 @@ function changeColors(palette) {
 	}
 };
 
-//Change brush style
+/**
+ * Поменять стиль кисти.
+ * Может быть скруглённым, квадратным и кривым
+ */
 var brushstyle;
 function changeBrushStyle(obj) {
 	switch(obj.id) {
@@ -164,13 +176,18 @@ function changeBrushStyle(obj) {
 	}
 };
 
-//Change line width
+/**
+ * Обновить ширину линии
+ * @return ширина элемента myRange
+ */
 function lineWidthRange() {
     var widthLine = document.getElementById("myRange").value;
     return widthLine;
 };
 
-//Clear canvas
+/**
+ * Очистить
+ */
 function erase() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 };
@@ -183,7 +200,9 @@ button.href = dataURL;
 
 });
 
-//Rectangle shape
+/**
+ * Нарисовать квадрат
+ */
 function rectangle() {
 	removeRectangleInLine = 1;
 
@@ -191,7 +210,7 @@ function rectangle() {
 	canvas.removeEventListener('mousemove', linesMousemove, false);
 	canvas.removeEventListener('mouseup', linesMouseup, false);
 	canvas.removeEventListener('mouseout', linesMouseout, false);
-	
+
 	//Initialize mouse coordinates to 0,0
 	var mouse = {x: 0, y: 0};
 
@@ -213,7 +232,7 @@ function rectangle() {
 		ctx.beginPath();
 		mouse.x = e.pageX - this.offsetLeft;
 		mouse.y = e.pageY - this.offsetTop;
-		canvas.addEventListener('mousemove', draw, false);		  
+		canvas.addEventListener('mousemove', draw, false);
 	};
 
 	//When mouse lifts up, line stops drawing
@@ -234,7 +253,9 @@ function rectangle() {
 	canvas.addEventListener('mouseout', rectMouseout, false);
 };
 
-//Triangle shape
+/**
+ * Нарисовать треугольник
+ */
 function triangle() {
 	removeRectangleInLine = 1;
 
@@ -242,7 +263,7 @@ function triangle() {
 	canvas.removeEventListener('mousemove', linesMousemove, false);
 	canvas.removeEventListener('mouseup', linesMouseup, false);
 	canvas.removeEventListener('mouseout', linesMouseout, false);
-	
+
 	//Initialize mouse coordinates to 0,0
 	var mouse = {x: 0, y: 0};
 
@@ -274,7 +295,7 @@ function triangle() {
 		ctx.beginPath();
 		mouse.x = e.pageX - this.offsetLeft;
 		mouse.y = e.pageY - this.offsetTop;
-		canvas.addEventListener('mousemove', draw, false);		  
+		canvas.addEventListener('mousemove', draw, false);
 	};
 
 	//When mouse lifts up, line stops drawing
@@ -294,5 +315,3 @@ function triangle() {
 	canvas.addEventListener('mousemove', rectMouseMove, false);
 	canvas.addEventListener('mouseout', rectMouseout, false);
 };
-
-
